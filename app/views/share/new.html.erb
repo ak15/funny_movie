@@ -1,0 +1,18 @@
+<div class="col-md-7 offset-md-3 align-middle pt-5 mt-5">
+  <%= form_tag 'share', method: :post, name: "share-form" do %>
+    <fieldset class="border p-2">
+      <legend class="w-auto">Share a Youtube Movie</legend>
+      <div class="row mt-5">
+        <label for="url" class="col-md-2 col-form-label">Youtube Url</label>
+        <div class="col-md-10">
+          <%= text_field_tag "url", "", class: "form-control", placeholder: "Enter Youtube Movie Url" %>
+        </div>
+      </div>
+      <div class="p-3 mb-4">
+        <div class=" text-center">
+          <%= submit_tag "Share", class: "btn btn-primary" %>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

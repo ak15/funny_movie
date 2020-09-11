@@ -1,0 +1,3 @@
+<% if current_user.present? %>
+  $(".session-based-header").html("<%= j render  session_based_header %>")
+<% end %>

@@ -1,0 +1,4 @@
+<h6 style="display: inline-block;">Welcome <%= current_user.email %></h5>
+<%= link_to('Share a movie', '/share', class: 'ml-3 mr-3 btn btn-small btn-primary') %>
+<%= link_to('Logout', destroy_user_session_path, method: :delete,
+  class: 'ml-3 mr-3 btn btn-small btn-primary') %>

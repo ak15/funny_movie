@@ -1,0 +1,5 @@
+<%= form_tag "/sessions", remote: true, class: "form-inline" do %>
+  <%= email_field_tag :email, "", class: "mr-2", placeholder: "Enter Email" %>
+  <%= password_field_tag :password, "", class: "mr-2", placeholder: "Password" %>
+  <%= submit_tag "Login/Register", class: "btn-sm btn-primary sm-3" %>
+<% end %>
