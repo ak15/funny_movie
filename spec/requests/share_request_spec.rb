@@ -2,11 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "Shares", type: :request do
 
-  describe "GET /new" do
-    it "returns http success" do
-      get "/share/new"
-      expect(response).to have_http_status(:success)
+  let(:user) { User.create(email: "atulk@gmail.com", password: "sample") }
+
+  describe "POST /share" do
+    it "creates new  movie" do
+      login_as(user, scope: :user)
+      post "/share", params: { url: "https://www.youtube.com/watch?v=Fh_UDQnboRw" }
+      expect(Movie.count).to eql(1)
     end
   end
+
 
 end
