@@ -1,8 +1,8 @@
 <div class="container">
   <% @movies.each do |movie| %>
     <div class="row mb-5">
-      <div class="col-sm-5">
-        <iframe width="420" height="300" src="https://www.youtube.com/embed/<%= movie.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="col-sm-5 embed-responsive embed-responsive-4by3">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= movie.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="col-sm-6">
         <h4><%= movie.title %></h4>
