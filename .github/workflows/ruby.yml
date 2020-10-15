@@ -18,9 +18,15 @@ jobs:
 
     runs-on: ubuntu-latest
     services:
+      # How to use MySQL
       mysql:
-         image: mysql:5.7
-
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+        - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      # How to use Redis
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -32,5 +38,16 @@ jobs:
         ruby-version: 2.7.0
     - name: Install dependencies
       run: bundle install
+    - name: Create DB
+        env:
+          RAILS_ENV: test
+          DB_PASSWORD: root
+          # tell Rails to use proper port for MySQL
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+      run: |
+        cp .env.sample .env
+        cp config/database.yml.ci config/database.yml
+        # create DB for Rails 6.x
+        bin/rails db:prepare
     - name: Run tests
       run: bundle exec rspec spec --format=doc
