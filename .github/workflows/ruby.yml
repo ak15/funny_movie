@@ -39,11 +39,10 @@ jobs:
     - name: Install dependencies
       run: bundle install
     - name: Create DB
-        env:
-          RAILS_ENV: test
-          DB_PASSWORD: root
-          # tell Rails to use proper port for MySQL
-          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+      env:
+        RAILS_ENV: test
+        DB_PASSWORD: root
+        DB_PORT: ${{ job.services.mysql.ports[3306] }}
       run: |
         cp .env.sample .env
         cp config/database.yml.ci config/database.yml
