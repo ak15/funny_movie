@@ -35,7 +35,7 @@ jobs:
     - name: Set up Ruby 2.7
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.7
+        ruby-version: 2.7.0
     - uses: actions/cache@v1
       with:
         path: vendor/bundle
@@ -56,8 +56,8 @@ jobs:
         # tell Rails to use proper port for MySQL
         DB_PORT: ${{ job.services.mysql.ports[3306] }}
       run: |
-        bundle install --jobs 4 --retry 3 --path vendor/bundle
-        bin/rails db:prepare
+        bundle install
+        rails db:prepare
 
     - name: Run tests
       env:
