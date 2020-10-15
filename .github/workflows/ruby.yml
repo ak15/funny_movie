@@ -50,4 +50,4 @@ jobs:
         # create DB for Rails 6.x
         bin/rails db:prepare
     - name: Run tests
-      run: bundle exec rspec spec --format=doc
+      run: bundle exec rspec spec
