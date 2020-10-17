@@ -4,7 +4,6 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: root
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -18,3 +17,4 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: 127.0.0.1
