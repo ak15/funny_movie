@@ -71,4 +71,4 @@ jobs:
         # to be able to retry CI build and run previously recorded tests
       run: |
         # run tests in Knapsack Pro Regular Mode
-        bundle exec rake knapsack_pro:rspec
+        bundle exec rspec spec --format=doc
