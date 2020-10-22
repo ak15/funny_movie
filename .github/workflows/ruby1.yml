@@ -66,11 +66,9 @@ jobs:
         DB_PORT: ${{ job.services.mysql.ports[3306] }} # get randomly assigned published port
         RAILS_ENV: test
         # You need to set API tokens in GitHub repository Settings -> Secrets
-        KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: ${{ secrets.KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC }}
         # if you use Knapsack Pro Queue Mode you must set below env variable
         # to be able to retry CI build and run previously recorded tests
       run: |
-        # run tests in Knapsack Pro Regular Mode
         bundle exec rails webpacker:compile
         bundle exec rails assets:precompile
         bundle exec rspec spec --format=doc
